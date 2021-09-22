@@ -1,0 +1,141 @@
+:root {
+  --hellll-: #444;
+}
+body {
+  font-family: "Spartan", sans-serif;
+}
+* {
+  box-sizing: border-box;
+  font-size: 32px;
+  font-weight: bold;
+}
+.number {
+  font-size: 32px;
+}
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+}
+.container {
+  width: 400px;
+  min-height: 500px;
+  margin: 60px auto;
+  background-color: transparent;
+}
+/* Start Header  */
+.container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container header h1 {
+  font-size: 20px;
+}
+.container header .theme-icon {
+  position: relative;
+  height: 20px;
+  width: 60px;
+  border-radius: 10px;
+}
+.container header .theme-icon * {
+  position: absolute;
+  cursor: default;
+}
+.container header .theme-icon .one,
+.container header .theme-icon .two,
+.container header .theme-icon .three {
+  top: -15px;
+  font-size: 10px;
+}
+.container header .theme-icon .one {
+  left: 5px;
+}
+.container header .theme-icon .two {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container header .theme-icon .three {
+  left: calc(100% - 11px);
+}
+.container header .theme-icon .name {
+  font-size: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  left: -60px;
+}
+.container header .theme-icon .ball {
+  height: calc(100% - 6px);
+  width: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* End header  */
+/* Start Screen  */
+.container .screen {
+  margin: 15px 0;
+  height: 90px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.container .screen .res {
+  margin: 0 20px 0;
+  font-size: 32px;
+}
+/* End Screen  */
+/* Start Keypad  */
+.container .keypad {
+  min-height: 300px;
+  border-radius: 10px;
+  padding: 25px;
+}
+.container .keypad .n-o {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+}
+.container .keypad .n-o button {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#del-ic {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.container .keypad .n-o button.op {
+  font-weight: 400;
+  font-size: 25px;
+}
+.container .keypad .fin {
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .keypad .fin * {
+  width: 160px;
+  height: 40px;
+  border-radius: 5px;
+}
+#reset {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+#eq {
+  font-size: 24px;
+}
+/* End Keypad  */

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html style="--main-background:hsl(222, 26%, 31%);
+--tog-keyp-background:hsl(223, 31%, 20%);
+--screen-background:hsl(224, 36%, 15%);
+--reset-del-backg:hsl(225, 21%, 49%);
+--reset-del-shaw:hsl(224, 28%, 35%);
+--eq-toggle-backg:hsl(6, 63%, 50%);
+--eq-toggle-shaw:hsl(6, 70%, 34%);
+--buttom-backg:hsl(30, 25%, 89%);
+--buttom-shaw:hsl(28, 16%, 65%);
+--main-color:#fff;
+--bottom-color:hsl(221, 14%, 31%);
+--reset-del-color:--main-color;
+--eq-color:--main-color;" lang="en" id="here">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+    <!-- ........... -->
+    <!-- CSS main file -->
+    <link rel="stylesheet" href="main.css">
+    <title>Frontend Mentor | Calculator app</title>
+    <style>
+      body{
+        background-color: var(--main-background);
+        color: var(--main-color);
+      }
+      #keyp , #theme {
+        background-color:var(--tog-keyp-background) ;
+      }
+      #scrn {
+        background-color: var(--screen-background);
+      }
+      button {
+        background-color: var(--buttom-backg);
+        border-bottom-color:var(--buttom-shaw) ;
+        color:var(--bottom-color)
+      }
+      button:active {
+        background-color: var(--buttom-shaw);
+      }
+      #reset , #del-ic {
+        background-color: var(--reset-del-backg);
+        border-bottom-color: var(--reset-del-shaw);
+        color:var(--reset-del-color)
+      }
+      #reset:active , #del-ic:active{
+        background-color: var(--reset-del-shaw);
+      } 
+      #eq , #tog {
+        background-color: var(--eq-toggle-backg);
+        border-bottom-color: var(--eq-toggle-shaw);
+        color: var(--eq-color);
+      }
+      #eq:active , #tog:active {
+        background-color: var(--eq-toggle-shaw);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <header>
+        <h1 class="name-of">calc</h1>
+        <div class="theme-icon" id="theme" >
+          <span class="one">1</span>
+          <span class="two">2</span>
+          <span class="three">3</span>
+          <span class="ball" id = "tog"></span>
+          <span class="name">THEME</span>
+        </div>
+      </header>
+      <div class="screen" id = scrn>
+        <p class="res" id = disp>0</p>
+      </div>
+      <div class="keypad" id="keyp">
+        <div class="n-o">
+          <button class="number">7</button>
+          <button class="number">8</button>
+          <button class="number">9</button>
+          <button id = "del-ic">DEL</button>
+          <button class="number">4</button>
+          <button class="number">5</button>
+          <button class="number">6</button>
+          <button class="op">+</button>
+          <button class="number">1</button>
+          <button class="number">2</button>
+          <button class="number">3</button>
+          <button class="op">-</button>
+          <button id="point">.</button>
+          <button class="number">0</button>
+          <button class="op">/</button>
+          <button class="op">x</button>
+        </div>
+        <div class="fin">
+          <button id="reset">RESET</button>
+          <button id="eq">=</button>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -60,18 +60,18 @@ toggEle.onclick = function() {
     }
 }
 let calcFunctions = {
-    dele() {
-        function cut(num){
+    cut(num){
             let arr = num.toString().split("")
             arr.pop()
             return arr.join("")
-        }
+    },
+    dele() {
         if (operV === 0) {
-            num = cut(num);
+            num = this.cut(num);
             document.getElementById("disp").innerHTML = num
         }
         else {
-            num2 = cut(num2);
+            num2 = this.cut(num2);
             document.getElementById("disp").innerHTML = num2
         }
     } , 
@@ -95,7 +95,7 @@ let calcFunctions = {
                 default: break;
                 }
             while (result.toString().length > 10){
-                result = calcFunctions.dele(result.toString());
+                result = this.cut(result.toString());
             }
             document.getElementById("disp").innerHTML = result.toString();
             operV = 0;
@@ -141,7 +141,7 @@ keypadEle.onclick = e => {
             document.getElementById("disp").innerHTML = "0";
         }
         else if(c === "DEL") {
-           calcFunctions.dele();
+            calcFunctions.dele();
         }
     }
 } 

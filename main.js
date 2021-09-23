@@ -87,28 +87,29 @@ let calcFunctions = {
     } , 
     eq() {
         if (operV !== 0) {
-            if(operV !== 4 && num2 !== 0){
                 switch (operV)  {
                     case 1: result = (+num) + (+num2);break;
                     case 2: result = (+num) - (+num2);break;
                     case 3: result = (+num) * (+num2);break;
                     case 4: result = (+num) / (+num2);break;
                     default: break;
-                    }
-                while (result.toString().length > 10){
-                    result = this.cut(result.toString());
                 }
-                document.getElementById("disp").innerHTML = result.toString();
-                operV = 0;
-                num2 = new String
-                num = result.toString()
-            }
-            else {
-                operV = 0;
-                num = new String;
-                num2 = new String;
-                document.getElementById("disp").innerHTML = "Cannot Divide By Zero"
-            }
+                if (result === Infinity) {
+                    operV = 0;
+                    num = new String;
+                    num2 = new String;
+                    document.getElementById("disp").innerHTML = "Cannot Divide By Zero"
+                }
+                else { 
+                    while (result.toString().length > 10){
+                        result = this.cut(result.toString());
+                    }
+
+                    document.getElementById("disp").innerHTML = result.toString();
+                    operV = 0;
+                    num2 = new String
+                    num = result.toString()
+                }
         }     
     },
     operations(s) {

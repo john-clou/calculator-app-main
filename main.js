@@ -1,4 +1,4 @@
-let themV = 1 , operV = null , num = new String , num2 = new String ,result,w,opa,toggEle = document.getElementById("tog");
+let themV = 1 , operV = 0 , num = new String , num2 = new String ,result,w,opa,toggEle = document.getElementById("tog");
 let keypadEle = document.getElementById("keyp")
 let mainV = document.getElementById("here");
 let c;
@@ -59,84 +59,89 @@ toggEle.onclick = function() {
         toggEle.style.transform = "translateY(-50%)";
     }
 }
-function dele() {
-    function cut(num){
-        let arr = num.toString().split("")
-        arr.pop()
-        return arr.join("")
-    }
-    if (operV === null) {
-        num = cut(num);
-        document.getElementById("disp").innerHTML = num
-    }
-    else {
-        num2 = cut(num2);
-        document.getElementById("disp").innerHTML = num2
-    }
+let calcFunctions = {
+    dele() {
+        function cut(num){
+            let arr = num.toString().split("")
+            arr.pop()
+            return arr.join("")
+        }
+        if (operV === 0) {
+            num = cut(num);
+            document.getElementById("disp").innerHTML = num
+        }
+        else {
+            num2 = cut(num2);
+            document.getElementById("disp").innerHTML = num2
+        }
+    } , 
+    add(n) {
+        if (operV === 0 && num.toString().length < 10)  {
+            num = num + (n).toString();
+            document.getElementById("disp").innerHTML = num ;
+        }
+        if (operV !== 0 && num2.toString().length < 10)  {
+            num2 = num2 + (n).toString();
+            document.getElementById("disp").innerHTML = num2 ;
+        }
+    } , 
+    eq() {
+        if (operV !== 0) {
+            switch (operV)  {
+                case 1: result = (+num) + (+num2);break;
+                case 2: result = (+num) - (+num2);break;
+                case 3: result = (+num) * (+num2);break;
+                case 4: result = (+num) / (+num2);break;
+                default: break;
+                }
+            while (result.toString().length > 10){
+                result = calcFunctions.dele(result.toString());
+            }
+            document.getElementById("disp").innerHTML = result.toString();
+            operV = 0;
+            num2 = new String
+            num = result.toString()
+        }     
+    },
+    operations(s) {
+        switch (s) {
+            case "+": operV = 1; break;
+            case "-": operV = 2; break;
+            case "x": operV = 3; break;
+            case "/": operV = 4; break;
+            case "=": this.eq(); break;
+            default: break;
+        }
+    } , 
 }
-function add(n) {
-    if (operV === null && num.toString().length < 10)  {
-        num = num + (n).toString();
-        document.getElementById("disp").innerHTML = num ;
-    }
-    if (operV !== null && num2.toString().length < 10)  {
-        num2 = num2 + (n).toString();
-        document.getElementById("disp").innerHTML = num2 ;
-    }
-}
-function operations(s) {
-    switch (s) {
-        case "+": operV = 1;break;
-        case "-": operV = 2;break;
-        case "x": operV = 3;break;
-        case "/": operV = 4;break;
-        case "=": 
-            if (operV !== null) {
-                switch (operV)  {
-                    case 1: result = (+num) + (+num2);break;
-                    case 2: result = (+num) - (+num2);break;
-                    case 3: result = (+num) * (+num2);break;
-                    case 4: result = (+num) / (+num2);break;
-                    }
-                    while (result.toString().length > 10){
-                        result = cut(result.toString())
-                    }
-                document.getElementById("disp").innerHTML = result.toString();
-                operV = null;
-                num2 = new String
-                num = result.toString()
-            }                
 
-        break;
-    }
-}
 keypadEle.onclick = e => {
     c = e.target.innerHTML;
     if (!isNaN(c)) {
-        add(c);
+        calcFunctions.add(c);
     }
     else if (c.length ===1){
         if (c === ".") {
             if (!num.toString().includes(".")) {
                 num = num + c
             }
-            if (operV !==null&&!num2.toString().includes(".")) {
+            if (operV !==0&&!num2.toString().includes(".")) {
                 num2 = num2 + c
             }
         }
         else {
-            operations(c);
+            calcFunctions.operations(c);
         }
     }
     else {
         if (c === "RESET") {
-            operV = null;
+            operV = 0;
             num = new String;
             num2 = new String;
             document.getElementById("disp").innerHTML = "0";
         }
         else if(c === "DEL") {
-            dele();
+           calcFunctions.dele();
         }
     }
 } 
@@ -146,17 +151,15 @@ document.onkeydown = function(e) {
     w = e.keyCode - 48;
 
     if (w < 10 && w >= 0){
-        add(w);
+        calcFunctions.add(w);
     }
     else {
-        // switch(w) {
-        //     case -40: dele();break;
-        //     case 141: opa = "-";break;
-        //     case 40: opa = "x";break;    -----------------LATER.....................
-        //     case 
+        switch(w) {
+            case -40: calcFunctions.dele(); break;
+            case -35: calcFunctions.eq(); break;
+            default:break;
 
-        // }
+        }
     }
     console.log(e.keyCode - 48);
 }
-

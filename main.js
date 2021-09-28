@@ -94,7 +94,7 @@ let calcFunctions = {
                     case 4: result = (+num) / (+num2);break;
                     default: break;
                 }
-                if (result === Infinity) {
+                if (result === Infinity || result === -Infinity) {
                     operV = 0;
                     num = new String;
                     num2 = new String;
